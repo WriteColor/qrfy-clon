@@ -166,7 +166,7 @@ export function Sidebar({ user }: SidebarProps) {
 
             <div className="mt-4 flex flex-col gap-2">
               {mounted && (
-                <Button variant="ghost" className="justify-start dark:text-foreground" onClick={toggleTheme}>
+                <Button variant="ghost" className="justify-center bg-accent hover:bg-accent/70 text-white" onClick={toggleTheme}>
                   {resolvedTheme === "dark" ? (
                     <>
                       <svg
@@ -215,8 +215,7 @@ export function Sidebar({ user }: SidebarProps) {
                 </Button>
               )}
               <Button
-                variant="ghost"
-                className="justify-start text-destructive hover:bg-destructive/10 hover:text-destructive dark:text-destructive-foreground"
+                className="justify-center bg-rose-600 ease-in-out hover:bg-rose-400"
                 onClick={handleLogout}
               >
                 <LogOut className="mr-2 h-5 w-5" />
@@ -359,20 +358,22 @@ export function Sidebar({ user }: SidebarProps) {
                   </div>
                 ) : (
                   <>
-                    <div className="flex items-center gap-3 rounded-lg px-3 py-2 transition-opacity duration-300 ease-in-out">
+                    <div className="flex bg-secondary items-center gap-3 rounded-lg px-3 py-2 transition-opacity duration-300 ease-in-out">
                       <Avatar>
-                        <AvatarFallback className="bg-primary text-primary-foreground">
+                        <AvatarFallback className="bg-inherit">
                           <User className="text-white"></User>
                         </AvatarFallback>
                       </Avatar>
-                      <div className="flex flex-col transition-all duration-300 ease-in-out">
-                        <span className="text-sm font-medium">{user.username}</span>
+                      <div className="flex flex-col">
+                        <span className="text-sm text-white font-medium">{user.username}</span>
                       </div>
                     </div>
 
                     <div className="mt-4 flex flex-col gap-2">
                       {mounted && (
-                        <Button variant="ghost" className="justify-start dark:text-foreground" onClick={toggleTheme}>
+                        <Button
+                        variant="ghost"
+                          className="justify-center bg-accent hover:bg-accent/70 text-white" onClick={toggleTheme}>
                           {resolvedTheme === "dark" ? (
                             <>
                               <svg
@@ -421,8 +422,7 @@ export function Sidebar({ user }: SidebarProps) {
                         </Button>
                       )}
                       <Button
-                        variant="ghost"
-                        className="justify-start text-destructive hover:bg-destructive/10 hover:text-destructive dark:text-destructive-foreground"
+                        className="justify-center bg-rose-600 ease-in-out hover:bg-rose-400"
                         onClick={handleLogout}
                       >
                         <LogOut className="mr-2 h-5 w-5" />
@@ -441,10 +441,10 @@ export function Sidebar({ user }: SidebarProps) {
             style={{ left: isCollapsed ? "63px" : "240px" }}
           >
             <Button
-              variant="ghost"
+              variant="default"
               size="icon"
               onClick={() => setIsCollapsed(!isCollapsed)}
-              className="h-8 w-8 rounded-full bg-card shadow-md border dark:text-foreground transition-all duration-300 ease-in-out"
+              className="h-8 w-8 rounded-full bg-card shadow-md border hover:text-white text-foreground transition-all duration-300 ease-in-out"
             >
               <div className="transition-transform duration-300 ease-in-out">
                 {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}

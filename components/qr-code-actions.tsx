@@ -118,7 +118,7 @@ export function QRCodeActions({ qrCode, scanUrl, qrImageUrl }: QRCodeActionsProp
         variant="outline"
         size="sm"
         onClick={handleDownloadQR}
-        className="border-secondary/30 text-secondary hover:bg-secondary/10 hover:text-secondary dark:border-secondary/50 dark:text-foreground"
+        className="border-secondary/30 text-secondary hover:bg-secondary/10 hover:text-secondary"
       >
         <Download className="mr-1 h-3 w-3" />
         Descargar
@@ -131,7 +131,7 @@ export function QRCodeActions({ qrCode, scanUrl, qrImageUrl }: QRCodeActionsProp
         disabled={isToggling}
         className={
           qrCode.active
-            ? "border-warning/30 text-warning hover:bg-warning/10 hover:text-warning dark:border-warning/50 dark:text-foreground"
+            ? "border-warning/30 text-warning hover:bg-warning/10 hover:text-warning"
             : "bg-success hover:bg-success/90 text-success-foreground"
         }
       >
