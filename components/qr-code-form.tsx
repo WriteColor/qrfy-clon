@@ -56,6 +56,7 @@ export function QRCodeForm({ qrCode }: QRCodeFormProps) {
   const [baseUrl, setBaseUrl] = useState("")
 
   useEffect(() => {
+    // Obtener la URL base del navegador
     setBaseUrl(window.location.origin)
   }, [])
 
@@ -75,7 +76,7 @@ export function QRCodeForm({ qrCode }: QRCodeFormProps) {
     }
 
     // Si hay un código QR, establecer la URL corta
-    if (qrCode) {
+    if (qrCode && baseUrl) {
       setShortUrl(`${baseUrl}/${qrCode.token}`)
     }
   }, [form, qrCode, baseUrl])
@@ -97,6 +98,7 @@ export function QRCodeForm({ qrCode }: QRCodeFormProps) {
       } else {
         // Crear nuevo código QR
         const result = await createQRCode(formattedData.name, formattedData.url)
+        // Asegurarse de usar la URL base del navegador para la URL acortada
         setShortUrl(`${baseUrl}/${result.token}`)
         setPreviewUrl(`/api/qr-preview/${result.token}`)
         notify("success", "QR creado", "El código QR ha sido creado correctamente")

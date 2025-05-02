@@ -8,6 +8,7 @@ import { formatDate, truncateUrl } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { QRCodeActions } from "@/components/qr-code-actions"
+import { getBaseUrl } from "@/app/actions"
 
 interface QRCodesListProps {
   userId: number
@@ -20,6 +21,9 @@ export async function QRCodesList({ userId, limit }: QRCodesListProps) {
     orderBy: { created_at: "desc" },
     take: limit,
   })
+
+  // Obtener la URL base del servidor
+  const baseUrl = await getBaseUrl()
 
   if (qrCodes.length === 0) {
     return (
@@ -41,8 +45,8 @@ export async function QRCodesList({ userId, limit }: QRCodesListProps) {
       {qrCodes.map((qr) => {
         // Usar la URL de la API para obtener la imagen del QR
         const qrImageUrl = `/api/qr-preview/${qr.token}`
-        // Construir la URL de escaneo
-        const scanUrl = `${process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://" + (typeof window !== "undefined" ? window.location.host : "")}/${qr.token}`
+        // Construir la URL de escaneo con el dominio completo
+        const scanUrl = `${baseUrl}/${qr.token}`
 
         return (
           <div key={qr.id} className="flex flex-col gap-4 rounded-lg border p-4 md:flex-row card-hover">
