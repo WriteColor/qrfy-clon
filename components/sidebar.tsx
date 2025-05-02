@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { Home, QrCode, Plus, LogOut, ChevronRight, ChevronLeft, Menu } from "lucide-react"
+import { Home, QrCode, Plus, LogOut, ChevronRight, ChevronLeft, Menu, User } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -324,12 +324,11 @@ export function Sidebar({ user }: SidebarProps) {
                   <div className="flex items-center gap-3 rounded-lg px-3 py-2">
                     <Avatar>
                       <AvatarFallback className="bg-primary text-primary-foreground">
-                        {user.username.substring(0, 2).toUpperCase()}
+                        <User></User>
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col">
                       <span className="text-sm font-medium">{user.username}</span>
-                      <span className="text-xs text-muted-foreground truncate max-w-[160px]">{user.email}</span>
                     </div>
                   </div>
 
