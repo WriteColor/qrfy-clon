@@ -55,7 +55,7 @@
     --popover-foreground: 210 40% 98%;
 
     --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
 
     --secondary: 250 95% 76%;
     --secondary-foreground: 222 47% 11%;
@@ -91,6 +91,37 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Estilos para mejorar el contraste en modo oscuro */
+.dark button svg,
+.dark a svg {
+  color: hsl(var(--foreground));
+}
+
+/* Clases para mejorar el contraste de los botones en modo oscuro */
+.dark .border-primary\/30 {
+  border-color: hsl(var(--primary) / 0.5);
+}
+
+.dark .border-info\/30 {
+  border-color: hsl(var(--info) / 0.5);
+}
+
+.dark .border-secondary\/30 {
+  border-color: hsl(var(--secondary) / 0.5);
+}
+
+.dark .border-destructive\/30 {
+  border-color: hsl(var(--destructive) / 0.5);
+}
+
+.dark .border-warning\/30 {
+  border-color: hsl(var(--warning) / 0.5);
+}
+
+.dark .border-success\/30 {
+  border-color: hsl(var(--success) / 0.5);
 }
 
 .gradient-bg {
