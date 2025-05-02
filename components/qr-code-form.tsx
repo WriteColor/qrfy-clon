@@ -214,7 +214,13 @@ export function QRCodeForm({ qrCode }: QRCodeFormProps) {
                 <FormLabel>URL acortada</FormLabel>
                 <div className="flex items-center gap-2">
                   <Input value={shortUrl} readOnly className="flex-1" />
-                  <Button type="button" variant="outline" size="icon" onClick={copyToClipboard}>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    onClick={copyToClipboard}
+                    className="dark:text-foreground"
+                  >
                     <Copy className="h-4 w-4" />
                   </Button>
                 </div>
@@ -227,11 +233,15 @@ export function QRCodeForm({ qrCode }: QRCodeFormProps) {
                 type="button"
                 variant="outline"
                 onClick={handlePreview}
-                className="border-info/30 text-info hover:bg-info/10 hover:text-info"
+                className="border-info/30 text-info hover:bg-info/10 hover:text-info dark:border-info/50 dark:text-foreground"
               >
                 Vista previa
               </Button>
-              <Button type="submit" disabled={isSubmitting} className="bg-primary hover:bg-primary/90">
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              >
                 {isSubmitting ? (
                   <div className="flex items-center">
                     <svg

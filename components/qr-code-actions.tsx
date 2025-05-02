@@ -108,7 +108,7 @@ export function QRCodeActions({ qrCode, scanUrl, qrImageUrl }: QRCodeActionsProp
         variant="outline"
         size="sm"
         onClick={handleCopyLink}
-        className="border-info/30 text-info hover:bg-info/10 hover:text-info"
+        className="border-info/30 text-info hover:bg-info/10 hover:text-info dark:border-info/50 dark:text-foreground"
       >
         <Copy className="mr-1 h-3 w-3" />
         Copiar
@@ -118,7 +118,7 @@ export function QRCodeActions({ qrCode, scanUrl, qrImageUrl }: QRCodeActionsProp
         variant="outline"
         size="sm"
         onClick={handleDownloadQR}
-        className="border-secondary/30 text-secondary hover:bg-secondary/10 hover:text-secondary"
+        className="border-secondary/30 text-secondary hover:bg-secondary/10 hover:text-secondary dark:border-secondary/50 dark:text-foreground"
       >
         <Download className="mr-1 h-3 w-3" />
         Descargar
@@ -131,7 +131,7 @@ export function QRCodeActions({ qrCode, scanUrl, qrImageUrl }: QRCodeActionsProp
         disabled={isToggling}
         className={
           qrCode.active
-            ? "border-warning/30 text-warning hover:bg-warning/10 hover:text-warning"
+            ? "border-warning/30 text-warning hover:bg-warning/10 hover:text-warning dark:border-warning/50 dark:text-foreground"
             : "bg-success hover:bg-success/90 text-success-foreground"
         }
       >
@@ -144,7 +144,7 @@ export function QRCodeActions({ qrCode, scanUrl, qrImageUrl }: QRCodeActionsProp
           <Button
             variant="outline"
             size="sm"
-            className="border-destructive/30 text-destructive hover:bg-destructive/10 hover:text-destructive"
+            className="border-destructive/30 text-destructive hover:bg-destructive/10 hover:text-destructive dark:border-destructive/50 dark:text-foreground"
           >
             <Trash2 className="mr-1 h-3 w-3" />
             Eliminar

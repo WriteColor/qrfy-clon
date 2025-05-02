@@ -89,7 +89,7 @@ export async function QRCodesList({ userId, limit }: QRCodesListProps) {
                   variant="outline"
                   size="sm"
                   asChild
-                  className="border-primary/30 text-primary hover:bg-primary/10 hover:text-primary"
+                  className="border-primary/30 text-primary hover:bg-primary/10 hover:text-primary dark:border-primary/50 dark:text-foreground"
                 >
                   <Link href={`/qr-codes/${qr.id}/edit`}>
                     <Edit className="mr-1 h-3 w-3" />
@@ -101,7 +101,7 @@ export async function QRCodesList({ userId, limit }: QRCodesListProps) {
                   variant="outline"
                   size="sm"
                   asChild
-                  className="border-info/30 text-info hover:bg-info/10 hover:text-info"
+                  className="border-info/30 text-info hover:bg-info/10 hover:text-info dark:border-info/50 dark:text-foreground"
                 >
                   <Link href={scanUrl} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="mr-1 h-3 w-3" />
@@ -119,7 +119,7 @@ export async function QRCodesList({ userId, limit }: QRCodesListProps) {
           <Button
             variant="outline"
             asChild
-            className="border-primary/30 text-primary hover:bg-primary/10 hover:text-primary"
+            className="border-primary/30 text-primary hover:bg-primary/10 hover:text-primary dark:border-primary/50 dark:text-foreground"
           >
             <Link href="/qr-codes">Ver todos</Link>
           </Button>

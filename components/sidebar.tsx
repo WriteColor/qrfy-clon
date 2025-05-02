@@ -155,7 +155,7 @@ export function Sidebar({ user }: SidebarProps) {
 
             <div className="mt-4 flex flex-col gap-2">
               {mounted && (
-                <Button variant="ghost" className="justify-start" onClick={toggleTheme}>
+                <Button variant="ghost" className="justify-start dark:text-foreground" onClick={toggleTheme}>
                   {resolvedTheme === "dark" ? (
                     <>
                       <svg
@@ -205,7 +205,7 @@ export function Sidebar({ user }: SidebarProps) {
               )}
               <Button
                 variant="ghost"
-                className="justify-start text-destructive hover:bg-destructive/10 hover:text-destructive"
+                className="justify-start text-destructive hover:bg-destructive/10 hover:text-destructive dark:text-destructive-foreground"
                 onClick={handleLogout}
               >
                 <LogOut className="mr-2 h-5 w-5" />
@@ -243,7 +243,7 @@ export function Sidebar({ user }: SidebarProps) {
                       "flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-300",
                       pathname === item.href
                         ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground dark:text-foreground",
                       isCollapsed && "justify-center",
                     )}
                   >
@@ -267,7 +267,7 @@ export function Sidebar({ user }: SidebarProps) {
                       variant="ghost"
                       size="icon"
                       onClick={toggleTheme}
-                      className="rounded-full"
+                      className="rounded-full dark:text-foreground"
                     >
                       {resolvedTheme === "dark" ? (
                         <svg
@@ -313,7 +313,7 @@ export function Sidebar({ user }: SidebarProps) {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="rounded-full text-destructive hover:bg-destructive/10 hover:text-destructive"
+                    className="rounded-full text-destructive hover:bg-destructive/10 hover:text-destructive dark:text-destructive-foreground"
                     onClick={handleLogout}
                   >
                     <LogOut className="h-5 w-5" />
@@ -324,7 +324,7 @@ export function Sidebar({ user }: SidebarProps) {
                   <div className="flex items-center gap-3 rounded-lg px-3 py-2">
                     <Avatar>
                       <AvatarFallback className="bg-primary text-primary-foreground">
-                        <User></User>
+                        <User className="text-white"></User>
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col">
@@ -334,7 +334,7 @@ export function Sidebar({ user }: SidebarProps) {
 
                   <div className="mt-4 flex flex-col gap-2">
                     {mounted && (
-                      <Button variant="ghost" className="justify-start" onClick={toggleTheme}>
+                      <Button variant="ghost" className="justify-start dark:text-foreground" onClick={toggleTheme}>
                         {resolvedTheme === "dark" ? (
                           <>
                             <svg
@@ -384,7 +384,7 @@ export function Sidebar({ user }: SidebarProps) {
                     )}
                     <Button
                       variant="ghost"
-                      className="justify-start text-destructive hover:bg-destructive/10 hover:text-destructive"
+                      className="justify-start text-destructive hover:bg-destructive/10 hover:text-destructive dark:text-destructive-foreground"
                       onClick={handleLogout}
                     >
                       <LogOut className="mr-2 h-5 w-5" />
@@ -402,7 +402,7 @@ export function Sidebar({ user }: SidebarProps) {
               variant="ghost"
               size="icon"
               onClick={() => setIsCollapsed(!isCollapsed)}
-              className="h-8 w-8 rounded-full bg-card shadow-md border"
+              className="h-8 w-8 rounded-full bg-card shadow-md border dark:text-foreground"
             >
               {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
             </Button>
