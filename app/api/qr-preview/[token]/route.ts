@@ -6,16 +6,18 @@ import QRCode from "qrcode"
 import { prisma } from "@/lib/prisma"
 import { getBaseUrl } from "@/app/actions"
 
-export async function GET(request: NextRequest, { params }: { params: { token: string } }) {
+export async function GET(request: NextRequest, context: { params: Promise<{ token: string }> }) {
   try {
-    const { token } = params
+    // Esperar a que se resuelvan los parámetros antes de acceder a ellos
+    const params = await context.params
+    const token = params.token
 
     const qrCode = await prisma.qr_codes.findUnique({
       where: { token },
     })
 
     if (!qrCode) {
-      return NextResponse.json({ error: "Código QR no encontrado" }, { status: 404 })
+      return NextResponse.json({ error: "QR Code Not Found" }, { status: 404 })
     }
 
     // Obtener la URL base

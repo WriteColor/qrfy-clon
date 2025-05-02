@@ -27,7 +27,7 @@ export async function generateUniqueToken(length = 6): Promise<string> {
 
 // Obtener la URL base desde los headers de la solicitud
 export async function getBaseUrl() {
-  const headersList = headers()
+  const headersList = await headers()
   const host = headersList.get("host") || "localhost:3000"
   const protocol = host.includes("localhost") ? "http" : "https"
   return `${protocol}://${host}`
