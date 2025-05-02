@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model remember_tokens {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  token      String
+  created_at DateTime @default(now())
+  expires_at DateTime?
+
+  users users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model sessions {
+  id            String   @id
+  user_id       Int
+  ip_address    String
+  user_agent    String?
+  payload       String?
+  last_activity Int
+  expires_at    BigInt
+
+  users users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model qr_codes {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  token      String   @unique @db.VarChar(6)
+  name       String
+  url        String
+  active     Boolean  @default(true)
+  scan_count Int      @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  users users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model users {
+  id         Int               @id @default(autoincrement())
+  username   String            @unique
+  email      String            @unique
+  password   String
+  created_at DateTime          @default(now())
+  updated_at DateTime          @updatedAt
+
+  remember_tokens remember_tokens[]
+  sessions        sessions[]
+  qr_codes        qr_codes[]
+}
