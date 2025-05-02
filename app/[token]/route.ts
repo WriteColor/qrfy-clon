@@ -27,11 +27,20 @@ export async function GET(request: NextRequest, context: { params: Promise<{ tok
     // Verificar si ya existe una cookie para este token
     const hasVisitedCookie = request.cookies.get(`qr_visited_${token}`)
     
+    // Obtener la URL de referencia para verificar si viene del dashboard
+    const referer = request.headers.get('referer') || '';
+    const isDashboardAccess = referer.includes('/dashboard') || 
+                             referer.includes('/qr-codes') ||
+                             request.url.includes('/dashboard') ||
+                             request.url.includes('/qr-codes');
+    
     // Crear la respuesta de redirección
     const response = NextResponse.redirect(qrCode.url)
     
-    // Solo incrementar el contador si no existe la cookie (primera visita)
-    if (!hasVisitedCookie) {
+    // Solo incrementar el contador si:
+    // 1. No existe la cookie (primera visita)
+    // 2. No es un acceso desde el dashboard o páginas relacionadas
+    if (!hasVisitedCookie && !isDashboardAccess) {
       // Incrementar el contador de escaneos
       await incrementScanCount(token)
       
