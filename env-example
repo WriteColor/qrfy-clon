@@ -1,0 +1,5 @@
+# Connect to Supabase via connection pooling
+DATABASE_URL="SUPABASE-PRISMA DB URL"
+
+# Direct connection to the database. Used for migrations
+DIRECT_URL="SUPABASE-PRISMA DIRECT DB URL"
